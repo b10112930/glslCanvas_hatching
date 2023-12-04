@@ -20,6 +20,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
+uniform sampler2D u_tex0;
 
 float random (in float x) {
     return fract(sin(x)*1e4);
