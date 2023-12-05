@@ -27,12 +27,12 @@ float random (in float x) {
 }
 
 float random (in vec2 st) {
-    return fract(sin(dot(st.xy, vec2(0.020,0.010)))* 43758.5453123);
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
 }
 
 float pattern(vec2 st, vec2 v, float t) {
     vec2 p = floor(st+v);
-    return step(t, random(100.+p*.000001)+random(p.x)*0.5 );
+    return step(t, random(100.+p*.000001)+random(p.x)*0.3 );
 }
 
 void main() {
@@ -51,21 +51,13 @@ void main() {
     // Assign a random value base on the integer coord
     vec2 offset = vec2(0.1,0.);
 
-    vec3 color = vec3(0.);
+    vec3 color = vec3(0.0);
     color.r = pattern(st+offset,vel,0.5+u_mouse.x/u_resolution.x);
-    color.g = pattern(st,vel,0.5+u_mouse.x/u_resolution.x);
+    color.g = pattern(st,vel,0.7+u_mouse.x/u_resolution.x);
     color.b = pattern(st-offset,vel,0.5+u_mouse.x/u_resolution.x);
-    
-    // 获取纹理颜色
-    vec4 texColor = texture2D(u_tex0, st);
-
-    // 结合纹理颜色和pattern函数生成的颜色
-    color.r = mix(color.r, texColor.r, 0.5);
-    color.g = mix(color.g, texColor.g, 0.5);
-    color.b = mix(color.b, texColor.b, 0.5);
 
     // Margins
-    color *= step(0.2,fpos.y);
+    color *= step(0.8,fpos.y);
 
-    gl_FragColor = vec4(1.0-color,0.664);
+    gl_FragColor = vec4(1.0-color,1.0);
 }
