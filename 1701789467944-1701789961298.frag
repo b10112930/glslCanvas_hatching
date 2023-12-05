@@ -55,7 +55,7 @@ void main() {
     float n = iqnoise(st, u_mouse.x/u_resolution.x, u_mouse.y/u_resolution.y);
 
     // 插值顏色
-    vec3 orange = vec3(0.760,0.765,0.512);
+    vec3 orange = vec3(0.733,0.765,0.758);
     vec3 blue = vec3(0.647,0.660,0.583);
     vec3 noiseColor;
 
