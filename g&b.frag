@@ -48,5 +48,5 @@ void main() {
     // Margins
     color *= step(0.8,fpos.y);
 
-    gl_FragColor = vec4(1.0-color,0.0);
+    gl_FragColor = vec4(1.0-color,0.5);
 }
