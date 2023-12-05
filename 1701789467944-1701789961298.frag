@@ -14,7 +14,7 @@ vec3 hash3( vec2 p ) {
     vec3 q = vec3( dot(p,vec2(-0.610,0.500)),
                    dot(p,vec2(269.5,183.3)),
                    dot(p,vec2(-0.780,0.830)) );
-    return fract(sin(q)*43758.5453);
+    return fract(cos(q)*43758.5453);
 }
 
 float iqnoise( in vec2 x, float u, float v ) {
@@ -46,7 +46,8 @@ void main() {
     st.x *= u_resolution.x/u_resolution.y;
 
     // 採樣紋理
-    vec4 texColor = texture2D(u_tex0, st);
+    vec2 texCoord = gl_FragCoord.xy / u_resolution.xy;  // 使用归一化的屏幕坐标
+    vec4 texColor = texture2D(u_tex0, texCoord);
 
     // 加入iqnoise
     //st *= 12.368;
