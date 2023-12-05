@@ -57,7 +57,7 @@ void main() {
 
     // Blend Metaballs color with texture color
     // You can adjust the blending factor as needed
-    color = mix(color, texColor.rgb, 0.1);
+    color = mix(color, texColor.rgb, 0.5);
 
     gl_FragColor = vec4(color, 1.0);
 }
