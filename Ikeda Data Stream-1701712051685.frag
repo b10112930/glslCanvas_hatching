@@ -1,26 +1,12 @@
-// Author @patriciogv - 2015
-// Title: Ikeda Data Stream
-
 #ifdef GL_ES
 precision mediump float;
 #endif
-
-// Copyright (c) Patricio Gonzalez Vivo, 2015 - http://patriciogonzalezvivo.com/
-// I am the sole copyright owner of this Work.
-//
-// You cannot host, display, distribute or share this Work in any form,
-// including physical and digital. You cannot use this Work in any
-// commercial or non-commercial product, website or project. You cannot
-// sell this Work and you cannot mint an NFTs of it.
-// I share this Work for educational purposes, and you can link to it,
-// through an URL, proper attribution and unmodified screenshot, as part
-// of your educational material. If these conditions are too restrictive
-// please contact me and we'll definitely work it out.
 
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 uniform sampler2D u_tex0;
+
 
 float random (in float x) {
     return fract(sin(x)*1e4);
@@ -55,6 +41,8 @@ void main() {
     color.r = pattern(st+offset,vel,0.5+u_mouse.x/u_resolution.x);
     color.g = pattern(st,vel,0.7+u_mouse.x/u_resolution.x);
     color.b = pattern(st-offset,vel,0.5+u_mouse.x/u_resolution.x);
+    
+    gl_FragColor = vec4(mix(1.0 - color, texture2D(u_tex0, st).rgb, 0.5), 1.0);
 
     // Margins
     color *= step(0.8,fpos.y);
