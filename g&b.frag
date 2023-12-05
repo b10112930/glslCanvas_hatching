@@ -51,11 +51,19 @@ void main() {
     // Assign a random value base on the integer coord
     vec2 offset = vec2(0.1,0.);
 
-    vec3 color = vec3(0.);
-    color.r = pattern(st+offset,vel,0.5+u_mouse.x/u_resolution.x);
+   vec3 color = vec3(0.);
+     /*color.r = pattern(st+offset,vel,0.5+u_mouse.x/u_resolution.x);
     color.g = pattern(st,vel,0.7+u_mouse.x/u_resolution.x);
-    color.b = pattern(st-offset,vel,0.5+u_mouse.x/u_resolution.x);
+    color.b = pattern(st-offset,vel,0.5+u_mouse.x/u_resolution.x);*/
 
+    // 讀取紋理顏色
+    vec4 texColor = texture2D(u_tex0, st / u_resolution.xy);
+
+    // 將紋理顏色與 iqnoise 效果進行混合
+    color.r = pattern(st + offset, vel, 0.5 + u_mouse.x/u_resolution.x) * texColor.r;
+    color.g = pattern(st, vel, 0.7 + u_mouse.x/u_resolution.x) * texColor.g;
+    color.b = pattern(st - offset, vel, 0.5 + u_mouse.x/u_resolution.x) * texColor.b;
+    
     // Margins
     color *= step(0.8,fpos.y);
 
