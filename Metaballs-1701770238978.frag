@@ -51,6 +51,10 @@ void main() {
 
     // Draw cells
     color += step(0.244, m_dist);
+    
+    // 取樣紋理
+    vec2 texCoord = st * vec2(u_resolution.x/u_resolution.y, 1.0);  // 考慮寬高比
+    vec4 texColor = texture2D(u_tex0, texCoord);
 
     // Sample the texture
     vec4 texColor = texture2D(u_tex0, st);
