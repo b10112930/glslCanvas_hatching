@@ -44,7 +44,9 @@ void main() {
     
     // 获取纹理颜色
     vec4 texColor = texture2D(u_tex0, st);
+    
     // Margins
     color *= step(0.8,fpos.y);
-    gl_FragColor = vec4(mix(1.0 - color, texture2D(u_tex0, st).rgb, 0.5), 1.0);
+
+    gl_FragColor = vec4(1.0-color,1.0);
 }
