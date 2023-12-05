@@ -51,8 +51,8 @@ void main() {
 
     // 加入iqnoise
     //st *= 12.368;
-    st = (st-.5)*120.00+-0.364;
-    float n = iqnoise(st, u_mouse.x/u_resolution.x, u_mouse.y/u_resolution.y);
+    st = (st-.100)*150.00+-0.7;
+    float n = iqnoise(st, u_mouse.y/u_resolution.x, u_mouse.x/u_resolution.y);
 
     // 插值顏色
     vec3 orange = vec3(0.733,0.765,0.758);
