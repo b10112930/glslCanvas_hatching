@@ -38,15 +38,18 @@ void main() {
     vec2 offset = vec2(0.1,0.);
 
     vec3 color = vec3(0.0);
-    color.r = pattern(st+offset,vel,0.5+u_mouse.x/u_resolution.x);
-    color.g = pattern(st,vel,0.7+u_mouse.x/u_resolution.x);
-    color.b = pattern(st-offset,vel,0.5+u_mouse.x/u_resolution.x);
-    
+    color.r = pattern(st + offset, vel, 0.5 + u_mouse.x / u_resolution.x);
+    color.g = pattern(st, vel, 0.7 + u_mouse.x / u_resolution.x);
+    color.b = pattern(st - offset, vel, 0.5 + u_mouse.x / u_resolution.x);
+
     // 获取纹理颜色
     vec4 texColor = texture2D(u_tex0, st);
-    
-    // Margins
-    color *= step(0.8,fpos.y);
 
-    gl_FragColor = vec4(1.0-color,1.0);
+    // 将 pattern 生成的颜色与纹理颜色混合
+    color = mix(color, texColor.rgb, 0.5);
+
+    // Margins
+    color *= step(0.8, fpos.y);
+
+    gl_FragColor = vec4(1.0 - color, 1.0);
 }
