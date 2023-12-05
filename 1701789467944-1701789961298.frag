@@ -51,7 +51,7 @@ void main() {
 
     // 加入iqnoise
     //st *= 12.368;
-    st = (st-.5)*8.878+0.332;
+    st = (st-.5)*30.00+-0.364;
     float n = iqnoise(st, u_mouse.x/u_resolution.x, u_mouse.y/u_resolution.y);
 
     // 插值顏色
