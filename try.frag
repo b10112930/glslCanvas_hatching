@@ -8,7 +8,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
-uniform sampler2D u_tex0;
+uniform sampler2D u_tex1;
 
 float random (in float x) {
     return fract(sin(x)*1e4);
@@ -25,11 +25,11 @@ float randomSerie(float x, float freq, float t) {
 void main() {
     vec2 st = gl_FragCoord.xy / u_resolution.xy;
 
-    vec3 color = vec3(0.146,0.510,0.233);
+    vec3 color = vec3(0.442,0.510,0.166);
 
     float cols = 5.;
     float freq = random(floor(u_time))+abs(atan(u_time)*0.1);
-    float t = 60.+u_time*(0.344-freq)*10.;
+    float t = 90.+u_time*(0.344-freq)*10.;
 
     if (fract(st.y*cols* 0.5) < 0.5){
         t *= -1.0;
@@ -37,7 +37,7 @@ void main() {
 
     freq += random(floor(st.y));
 
-    float offset = 0.025;
+    float offset = 0.825;
 
     // 使用滑鼠位置來改變紋理的位置
     float mouseOffset = u_mouse.x / u_resolution.x;
@@ -45,7 +45,7 @@ void main() {
                  randomSerie(st.x + mouseOffset, freq*100., t),
                  randomSerie(st.x + mouseOffset, freq*100., t-offset));
 
-    vec3 texColor = texture2D(u_tex0, st).rgb;
+    vec3 texColor = texture2D(u_tex1, st).rgb;
     
     // 合併紋理與原本的效果
     color = mix(color, texColor, 0.5);
