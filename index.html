@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-    <canvas id="glslCanvas" data-fragment-url="try.frag" width="800" height="600" data-textures="data/IMG_5563.JPG, data/20240102.jpg, data/hatch_1.jpg, data/hatch_2.jpg, data/hatch_3.jpg, data/hatch_4.jpg, data/hatch_5.jpg"></canvas>
+    <canvas id="glslCanvas" data-fragment-url="try.frag" width="800" height="600" data-textures=" data/20240102.jpg, data/IMG_5563.JPG, data/hatch_1.jpg, data/hatch_2.jpg, data/hatch_3.jpg, data/hatch_4.jpg, data/hatch_5.jpg"></canvas>
     <div id="credits">
         <p class="label" id="title"></p>
         <p class="label" id="author"></p>
@@ -64,7 +64,7 @@
         var canvas = document.getElementById("glslCanvas");
         var sandbox = new GlslCanvas(canvas);
         var texCounter = 0;
-        var fragmentUrls = ['try.frag', 'onlym.frag'];
+        var fragmentUrls = ['onlym.frag', 'try.frag'];
         var currentFragmentIndex = 0;
 
         function load(url) {
