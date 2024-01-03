@@ -27,9 +27,9 @@ void main() {
 
     vec3 color = vec3(0.146,0.510,0.233);
 
-    float cols = 5.;
+    float cols = 500.;
     float freq = random(floor(u_time))+abs(atan(u_time)*0.1);
-    float t = 60.+u_time*(0.344-freq)*10.;
+    float t = 90.+u_time*(0.344-freq)*10.;
 
     if (fract(st.y*cols* 0.5) < 0.5){
         t *= -1.0;
@@ -37,7 +37,7 @@ void main() {
 
     freq += random(floor(st.y));
 
-    float offset = 0.025;
+    float offset = 0.525;
 
     // 使用滑鼠位置來改變紋理的位置
     float mouseOffset = u_mouse.x / u_resolution.x;
